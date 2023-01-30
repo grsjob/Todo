@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Todoitem from "./item/TodoItem";
 import CreateTodoField from "./item/CreateTodo";
+import { FaScroll } from "react-icons/fa"
 
 const data = [
     {
@@ -42,6 +43,7 @@ const Home = () => {
     return (
         <div className="text-white w-4/5 mx-auto">
             <h1 className="text-2xl font-bold text-center mb-10">Список задач</h1>
+            <CreateTodoField setTodos={setTodos}/>
             {todos && todos.map((todo) => (
                 <Todoitem 
                     key={todo.id} 
@@ -50,8 +52,12 @@ const Home = () => {
                     removeTodo={removeTodo}
                 />
             ))}
-            {todos.length < 1 && <p className="text-center text-pink-500 transform text-2xl">Список пуст</p>}
-            <CreateTodoField setTodos={setTodos}/>
+            {todos.length < 1 && 
+                <div className="flex items-center text-center justify-center">
+                    <p className="text-center text-gray-400 transform text-xl mr-2">Список пуст</p>
+                    <FaScroll size={22} className="text-gray-400"/>
+                </div>
+            }
         </div>
     )
 }

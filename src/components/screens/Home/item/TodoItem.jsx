@@ -7,7 +7,7 @@ const Todoitem = ({todo, changeTodo, removeTodo}) => {
             justify-between mb-3 rounded-2xl
             bg-gray-800 p-2 w-full"
         >
-            <button className="flex items-center p-3 w-full" onClick={() => changeTodo(todo.id)}>
+            <button className="flex items-center p-3 w-full hover:opacity-60" onClick={() => changeTodo(todo.id)}>
                 <Check isCompleted={todo.isCompleted}/>
                 <span className={`mr-auto ${todo.isCompleted ? 'line-through' : ''}`}>
                     {todo.title}
