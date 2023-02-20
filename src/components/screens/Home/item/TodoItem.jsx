@@ -8,8 +8,8 @@ const Todoitem = ({todo, changeTodo, removeTodo}) => {
             bg-gray-800 p-2 w-full"
         >
             <button className="flex items-center p-3 w-full hover:opacity-60" onClick={() => changeTodo(todo.id)}>
-                <Check isCompleted={todo.isCompleted}/>
-                <span className={`mr-auto ${todo.isCompleted ? 'line-through' : ''}`}>
+                <Check isCompleted={todo.completed}/>
+                <span className={`mr-auto ${todo.completed ? 'line-through' : ''}`}>
                     {todo.title}
                 </span>                
             </button>

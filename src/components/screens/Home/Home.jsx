@@ -1,38 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Todoitem from "./item/TodoItem";
 import CreateTodoField from "./item/CreateTodo";
 import { FaScroll } from "react-icons/fa"
 
-const data = [
-    {
-        id: "1",
-        title: "Покормить собаку",
-        isCompleted: false,
-    },
-    {
-        id: "2",
-        title: "Передать документы",
-        isCompleted: false,
-    },
-    {
-        id: "3",
-        title: "Вынести мусор",
-        isCompleted: false,
-    },
-    {
-        id: "4",
-        title: "Похудеть к лету",
-        isCompleted: false,
-    },
-]
-
 const Home = () => {
-    const [todos, setTodos] = useState(data)
+    const [todos, setTodos] = useState([])
+
+    useEffect(() => {
+        fetch('https://jsonplaceholder.typicode.com/users/1/todos')
+            .then((res) => res.json())
+            .then((data) => {
+                setTodos(data.slice(0, 5))
+            })
+    }, [])
 
     const changeTodo = (id) => {
         const copy = [...todos]
         const current = copy.find(t => t.id === id)
-        current.isCompleted = !current.isCompleted
+        current.completed = !current.completed
         setTodos(copy)
     }
 
@@ -42,7 +27,7 @@ const Home = () => {
 
     return (
         <div className="text-white w-4/5 mx-auto">
-            <h1 className="text-2xl font-bold text-center mb-10">Список задач</h1>
+            <h1 className="text-2xl font-bold text-center mb-10">Список дел</h1>
             <CreateTodoField setTodos={setTodos}/>
             {todos && todos.map((todo) => (
                 <Todoitem 

@@ -15,7 +15,7 @@ const CreateTodoField = ({setTodos}) => {
             {
                 id: new Date(),
                 title: title,
-                isCompleted: false 
+                completed: false 
             },
             ...prev
         ])
