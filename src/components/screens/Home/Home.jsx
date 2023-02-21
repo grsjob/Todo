@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Todoitem from "./item/TodoItem";
 import CreateTodoField from "./item/CreateTodo";
-import { FaScroll } from "react-icons/fa"
+import EmptyList from "./item/EmptyList";
+import { changeTodo, removeTodo } from "../../../utils/controlTodos";
 
 const Home = () => {
     const [todos, setTodos] = useState([])
@@ -14,17 +15,6 @@ const Home = () => {
             })
     }, [])
 
-    const changeTodo = (id) => {
-        const copy = [...todos]
-        const current = copy.find(t => t.id === id)
-        current.completed = !current.completed
-        setTodos(copy)
-    }
-
-    const removeTodo = (id) => {
-        setTodos([...todos].filter(t => t.id !== id))
-    }
-
     return (
         <div className="text-white w-4/5 mx-auto">
             <h1 className="text-2xl font-bold text-center mb-10">Список дел</h1>
@@ -33,15 +23,14 @@ const Home = () => {
                 <Todoitem 
                     key={todo.id} 
                     todo={todo} 
+                    todos={todos}
+                    setTodos={setTodos}
                     changeTodo={changeTodo}
                     removeTodo={removeTodo}
                 />
             ))}
             {todos.length < 1 && 
-                <div className="flex items-center text-center justify-center">
-                    <p className="text-center text-gray-400 transform text-xl mr-2">Список пуст</p>
-                    <FaScroll size={22} className="text-gray-400"/>
-                </div>
+                <EmptyList/>
             }
         </div>
     )
