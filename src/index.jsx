@@ -7,7 +7,7 @@ import Layout from './components/Layout';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Layout classNmae='bg-gray-900 '>
+    <Layout className='bg-gray-900 '>
       <Home />
     </Layout>
   </React.StrictMode>
