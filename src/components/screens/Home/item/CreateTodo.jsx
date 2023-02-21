@@ -5,7 +5,7 @@ const CreateTodoField = ({setTodos}) => {
     const [title, setTitle] = useState('')
 
     const onKeyDown = (evt) => {
-        if(evt.key === 'Enter') {
+        if(evt.key === 'Enter' && title.length) {
             addTodo(title)
         }
     }
@@ -33,12 +33,11 @@ const CreateTodoField = ({setTodos}) => {
                 onKeyDown={onKeyDown}  
                 placeholder="Введите задачу"  
             />
-                    // ты в онклик передаешь колбек. Зависящий от длины тайтла? а зачем? и почему это в разметке делается? все условия, если они нужны делаем в самом
-                    // компоненте. разметка их только рисует или цепляет обработчики. не совсем понимаю для чего это нужно вообще можно просто отображать кнопку в зависимости от значения тайтла
-                    // а колбек не трогать
-            <button className="pl-4" onClick={() => title.length > 0 ? addTodo(title) : ''}>
-                <VscAdd size={22} className='text-gray-300 hover:text-green-600 transition-colors ease-in-out duration-300'/>
-            </button>
+            {!!title.length &&
+                <button className="pl-4" onClick={() => addTodo(title)}>
+                    <VscAdd size={22} className='text-gray-300 hover:text-green-600 transition-colors ease-in-out duration-300'/>
+                </button>
+            }
         </div>
     )
 }

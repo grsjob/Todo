@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Todoitem from "./item/TodoItem";
 import CreateTodoField from "./item/CreateTodo";
-import EmptyList from "./item/EmptyList";
+import EmptyList from "./EmptyList";
 import { changeTodo, removeTodo } from "../../../utils/controlTodos";
 
 const Home = () => {
@@ -34,7 +34,7 @@ const Home = () => {
                     removeTodo={removeTodo}
                 />
             ))}
-            {todos.length < 1 && 
+            {!todos.length && 
                 <EmptyList/>
             }
         </div>
