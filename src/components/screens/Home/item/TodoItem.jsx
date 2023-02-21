@@ -1,6 +1,7 @@
 import Check from "./Check";
 import { BsTrash } from "react-icons/bs";
-
+// в пропсах отдельно взятой сущности передается весь список. он тебе нужен для работы функций изменения стейта? тогда логику перенеси в сам компонент хоум. 
+// отдельный итем не должен знать ничего о всем списке. Он должен только рисовать свои поля и вешать на них обработчики
 const Todoitem = ({todos, setTodos, todo, changeTodo, removeTodo}) => {
     return (
         <div className="flex items-center
