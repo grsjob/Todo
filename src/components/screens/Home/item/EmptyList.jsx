@@ -1,5 +1,5 @@
 import { FaScroll } from "react-icons/fa"
-
+//компонент явно находится не в той папке. это список и он не должен быть в итеме
 const EmptyList = () => {
     return (
         <div className="flex items-center text-center justify-center">
