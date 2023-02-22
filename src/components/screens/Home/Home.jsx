@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import CreateTodoField from "./item/CreateTodo";
 import EmptyList from "./EmptyList";
 import List from "./List";
@@ -13,18 +13,21 @@ const Home = () => {
             .then((data) => {
                 setTodos(data.slice(0, 5))
             })
+            .catch(() => {
+                console.log('Error')
+            })
     }, [])
 
-    const changeTodo = (id) => {
-        const copy = [...todos]
-        const current = copy.find(t => t.id === id)
+    const changeTodo = useCallback((id) => {
+        const current = !![...todos] ? [...todos].find(t => t.id === id) : ''
         current.completed = !current.completed
-        setTodos(copy)
-    }
+        setTodos([...todos])
+    }, [todos])
     
-    const removeTodo = (id) => {
+    const removeTodo = useCallback((id) => {
         setTodos([...todos].filter(t => t.id !== id))
-    }
+    }, [todos])
+
     return (
         <div className="text-white w-4/5 mx-auto">
             <h1 className="text-2xl font-bold text-center mb-10">Список дел</h1>
