@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Todoitem from "./item/TodoItem";
 import CreateTodoField from "./item/CreateTodo";
 import EmptyList from "./EmptyList";
-import { changeTodo, removeTodo } from "../../../utils/controlTodos";
 
 const Home = () => {
     const [todos, setTodos] = useState([])
@@ -29,9 +28,6 @@ const Home = () => {
 // плохая практика передавать напрямую диспач экшены реакта в компоненты ниже. Оборачивай их в свою функцию, желательно ее еще обернуть в useCallback, чтобы она не
 // пересоздавалась заново и отправить это все пропсом дальше
                     setTodos={setTodos}
-//зачем ты передаешь пропсом функции, которые тянешь из утилит. Почему их не вытянуть напрямую в компонент? плодим пропсы просто так
-                    changeTodo={changeTodo}
-                    removeTodo={removeTodo}
                 />
             ))}
             {!todos.length && 
