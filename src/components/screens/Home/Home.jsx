@@ -19,9 +19,14 @@ const Home = () => {
     }, [])
 
     const changeTodo = useCallback((id) => {
-        const current = !![...todos] ? [...todos].find(t => t.id === id) : ''
-        current.completed = !current.completed
-        setTodos([...todos])
+        const current = [...todos].find(t => t.id === id)
+        
+        if (current) {
+            current.completed = !current.completed
+            setTodos([...todos])
+        } else {
+            console.log('Error2')
+        }
     }, [todos])
     
     const removeTodo = useCallback((id) => {
