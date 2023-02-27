@@ -1,3 +1,4 @@
+import React from 'react'
 import { FaScroll } from "react-icons/fa"
 
 const EmptyList = () => {

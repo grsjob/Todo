@@ -1,3 +1,4 @@
+import React from 'react'
 import Check from "./Check";
 import { BsTrash } from "react-icons/bs";
 
