@@ -1,26 +1,13 @@
 import React, { useState } from "react"
 import { VscAdd } from "react-icons/vsc"
 
-const CreateTodoField = ({setTodos}) => {
+const CreateTodoField = ({addTodo}) => {
     const [title, setTitle] = useState('')
 
     const onKeyDown = (evt) => {
         if(evt.key === 'Enter' && title.length) {
-            addTodo(title)
+            addTodo(title, setTitle)
         }
-    }
-    
-    const addTodo = (title) => {
-        setTodos(prev => [
-            {
-                id: new Date(),
-                title: title,
-                completed: false 
-            },
-            ...prev
-        ])
-
-        setTitle('')
     }
 
     return (
@@ -34,7 +21,7 @@ const CreateTodoField = ({setTodos}) => {
                 placeholder="Введите задачу"  
             />
             {!!title.length &&
-                <button className="pl-4" onClick={() => addTodo(title)}>
+                <button className="pl-4" onClick={() => addTodo(title, setTitle)}>
                     <VscAdd size={22} className='text-gray-300 hover:text-green-600 transition-colors ease-in-out duration-300'/>
                 </button>
             }

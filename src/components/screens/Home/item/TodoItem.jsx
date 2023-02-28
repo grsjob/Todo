@@ -3,7 +3,6 @@ import Check from "./Check";
 import { BsTrash } from "react-icons/bs";
 
 const Todoitem = ({todo, change, remove}) => {
-   
     return (
         <li className="flex items-center
             justify-between mb-3 rounded-2xl

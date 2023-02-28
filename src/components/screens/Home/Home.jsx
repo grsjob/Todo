@@ -3,7 +3,6 @@ import CreateTodoField from "./item/CreateTodo";
 import EmptyList from "./EmptyList";
 import List from "./List";
 
-
 const Home = () => {
     const [todos, setTodos] = useState([])
 
@@ -33,10 +32,25 @@ const Home = () => {
         setTodos([...todos].filter(t => t.id !== id))
     }, [todos])
 
+    
+    const addTodo = (title, setTitle) => {
+        setTodos(prev => [
+            {
+                id: new Date(),
+                title: title,
+                completed: false 
+            },
+            ...prev
+        ])
+        
+        setTitle('')
+    }
+
+
     return (
         <div className="text-white w-4/5 mx-auto">
             <h1 className="text-2xl font-bold text-center mb-10">Список дел</h1>
-            <CreateTodoField setTodos={setTodos}/>
+            <CreateTodoField addTodo={addTodo}/>
             <List
                 todos={todos}
                 changeTodo={changeTodo}

@@ -1,7 +1,11 @@
 import React from 'react'
 import {BsCheck} from 'react-icons/bs'
 
-const Check = ({isCompleted}) => {
+interface State {
+    isCompleted: boolean
+}
+
+const Check = ({isCompleted}: State) => {
     return (
         <div className={`flex items-center 
             justify-center border-2 rounded-lg border-pink-400 
