@@ -2,7 +2,17 @@ import React from 'react'
 import Check from "./Check";
 import { BsTrash } from "react-icons/bs";
 
-const Todoitem = ({todo, change, remove}) => {
+type TodoParams = {
+    todo: {
+        id: number
+        completed: boolean
+        title: string
+    }
+    change: (todo: number) => {}
+    remove: (todo: number) => {}
+}
+
+const Todoitem = ({todo, change, remove}: TodoParams) => {
     return (
         <li className="flex items-center
             justify-between mb-3 rounded-2xl

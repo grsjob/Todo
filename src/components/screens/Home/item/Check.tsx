@@ -1,7 +1,7 @@
 import React from 'react'
 import {BsCheck} from 'react-icons/bs'
 
-interface State {
+type State = {
     isCompleted: boolean
 }
 

@@ -1,6 +1,11 @@
 import React from 'react'
 
-const Layout = ({children}: any) => {
+type Child = {
+    children: React.ReactNode
+    className: string
+}
+
+const Layout = ({children}: Child) => {
     return (
         <div className="py-10 bg-gray-900 min-h-screen">
             {children}

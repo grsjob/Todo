@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaScroll } from "react-icons/fa"
 
-const EmptyList = () => {
+const EmptyList = (): React.ReactNode => {
     return (
         <div className="flex items-center text-center justify-center">
             <p className="text-center text-gray-400 transform text-xl mr-2">Список пуст</p>

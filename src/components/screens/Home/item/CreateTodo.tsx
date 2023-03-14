@@ -1,10 +1,18 @@
 import React, { useState } from "react"
 import { VscAdd } from "react-icons/vsc"
 
-const CreateTodoField = ({addTodo}) => {
+type AddTodo = {
+    addTodo: (title: string, setTitle: React.Dispatch<React.SetStateAction<string>>) => {}
+}
+
+type Evt = {
+    key: string
+}
+
+const CreateTodoField = ({addTodo}: AddTodo) => {
     const [title, setTitle] = useState('')
 
-    const onKeyDown = (evt) => {
+    const onKeyDown = (evt: Evt) => {
         if(evt.key === 'Enter' && title.length) {
             addTodo(title, setTitle)
         }
