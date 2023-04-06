@@ -4,7 +4,11 @@ import EmptyList from "./EmptyList";
 import List from "./List";
 
 const Home = () => {
-    const [todos, setTodos] = useState([])
+    const [todos, setTodos] = useState([{
+        id: 0,
+        title: '',
+        completed: false
+    }])
 
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/users/1/todos')
@@ -17,7 +21,7 @@ const Home = () => {
             })
     }, [])
 
-    const changeTodo = useCallback((id) => {
+    const changeTodo = useCallback((id: number): void => {
         const current = [...todos].find(t => t.id === id)
         
         if (current) {
@@ -28,15 +32,15 @@ const Home = () => {
         }
     }, [todos])
     
-    const removeTodo = useCallback((id) => {
+    const removeTodo = useCallback((id: number): void => {
         setTodos([...todos].filter(t => t.id !== id))
     }, [todos])
 
     
-    const addTodo = (title, setTitle) => {
+    const addTodo = (title: string, setTitle: Function): void => {
         setTodos(prev => [
             {
-                id: new Date(),
+                id: Math.random() * 1000,
                 title: title,
                 completed: false 
             },
@@ -45,7 +49,6 @@ const Home = () => {
         
         setTitle('')
     }
-
 
     return (
         <div className="text-white w-4/5 mx-auto">

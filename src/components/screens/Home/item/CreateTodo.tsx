@@ -2,7 +2,7 @@ import React, { useState } from "react"
 import { VscAdd } from "react-icons/vsc"
 
 type AddTodo = {
-    addTodo: (title: string, setTitle: React.Dispatch<React.SetStateAction<string>>) => {}
+    addTodo: (title: string, setTitle: React.Dispatch<React.SetStateAction<string>>) => void
 }
 
 type Evt = {
