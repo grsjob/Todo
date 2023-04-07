@@ -1,7 +1,8 @@
 import React from 'react'
 import Check from "./Check";
 import { BsTrash } from "react-icons/bs";
-
+//интерфейс который опять юзает базовый туду и еще два поля. где то такое уже было да и переиспользовать типы надо. Написал один интерфейс - расширил его где то дальше. сузил еще где то дальше, если нужны
+//отдельные поля из интерфейса. (хотя это лучше пореже использовать) но не нужно каждый раз писать новый
 type TodoParams = {
     todo: {
         id: number
@@ -20,6 +21,7 @@ const Todoitem = ({todo, change, remove}: TodoParams) => {
         >
             <button className="flex items-center p-3 w-full hover:opacity-60" onClick={() => change(todo.id)}>
                 <Check isCompleted={todo.completed}/>
+                //писал выше - в разметке лучше без проверок. в строках тоже. разве что тернарником можно выводить разные куски разметки и то не желательно
                 <span className={`mr-auto ${todo.completed ? 'line-through' : ''}`}>
                     {todo.title}
                 </span>                
